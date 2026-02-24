@@ -344,25 +344,113 @@ onUnmounted(() => {
   transform: scale(1) rotate(5deg) translateY(-10px);
 }
 
+@media (max-width: 1024px) {
+  .welcome-card {
+    padding: 3rem;
+    gap: 2rem;
+  }
+  .main-title {
+    font-size: 3.5rem;
+  }
+}
+
 @media (max-width: 768px) {
+  .home {
+    min-height: auto;
+    padding: 2rem 1rem;
+    align-items: flex-start;
+  }
+
   .welcome-card {
     flex-direction: column-reverse;
     text-align: center;
-    padding: 2rem;
-  }
-  .main-title {
-    font-size: 3rem;
+    padding: 2rem 1.5rem;
+    gap: 3rem;
   }
 
-  .profile-interaction-wrapper {
-    width: 200px;
-    height: 200px;
+  .welcome-card-left {
+    align-items: center;
+  }
+
+  .main-title {
+    font-size: 2.8rem;
+    letter-spacing: -1px;
+  }
+
+  .main-title:hover {
+    transform: none;
+  }
+
+  .subtitle-container {
+    height: 3.5rem;
+    margin-bottom: 1.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+
+  .subtitle-text {
+    font-size: 0.9rem;
+    letter-spacing: 2px;
+    justify-content: center;
+  }
+
+  .description {
+    font-size: 1rem;
     margin-bottom: 2rem;
   }
 
+  .profile-interaction-wrapper {
+    width: 180px;
+    height: 180px;
+    margin-bottom: 0;
+  }
+
+  .profile-interaction-wrapper:hover {
+    transform: none;
+  }
+
+  .profile-pic-border {
+    transform: none !important;
+  }
+
+  .profile-interaction-wrapper:hover .profile-pic-border {
+    transform: none;
+  }
+
+  .ellipses {
+    display: none;
+  }
+
   #profile-picture {
-    width: 160px;
-    height: 160px;
+    width: 180px;
+    height: 180px;
+  }
+
+  .profile-popup {
+    display: none;
+  }
+
+  .cta-container {
+    justify-content: center;
+    width: 100%;
+  }
+
+  .hire-me-button {
+    padding: 1rem 2.5rem;
+    font-size: 1rem;
+    width: 100%;
+    max-width: 300px;
+  }
+}
+
+@media (max-width: 480px) {
+  .main-title {
+    font-size: 2.2rem;
+  }
+
+  .welcome-card {
+    padding: 1.5rem 1rem;
   }
 }
 
