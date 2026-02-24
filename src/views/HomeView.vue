@@ -3,10 +3,11 @@ import { ref, onMounted, onUnmounted } from 'vue'
 
 const subtitles = [
   'I write a lot of code!',
+  'I have a PhD in Computer Science!',
   'I do research!',
   'I like building cool stuff!',
   "I'm a teacher!",
-  'I work in competitive programming!',
+  'I do competitive programming!',
   "I'm an event organizer!",
   "I'm a backend developer!",
   "I'm a network engineer!",
@@ -33,7 +34,9 @@ onUnmounted(() => {
     <div class="welcome-card-outer-border">
       <div class="welcome-card">
         <div class="welcome-card-left">
-          <h1 class="main-title">Dario Ostuni</h1>
+          <div class="title-wrapper">
+            <h1 class="main-title">Dario Ostuni</h1>
+          </div>
           <div class="subtitle-container">
             <Transition name="flip" mode="out-in">
               <div :key="currentIndex" class="subtitle-text">
@@ -160,7 +163,13 @@ onUnmounted(() => {
 }
 
 .main-title:hover {
-  transform: scale(1.05);
+  transform: scale(1.02);
+}
+
+.title-wrapper {
+  position: relative;
+  display: inline-block;
+  margin-bottom: 0.5rem;
 }
 
 .subtitle-container {
