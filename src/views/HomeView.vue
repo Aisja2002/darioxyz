@@ -11,7 +11,16 @@
         </p>
       </div>
       <div class="welcome-card-right">
-        <img id="profile-picture" src="../assets/dario.jpeg" alt="Dario Ostuni" />
+        <div class="profile-interaction-wrapper">
+          <div class="profile-pic-border">
+            <img id="profile-picture" src="../assets/dario.jpeg" alt="Dario Ostuni" />
+          </div>
+          <div class="ellipses">
+            <div class="ellipse ellipse-1"></div>
+            <div class="ellipse ellipse-2"></div>
+            <div class="ellipse ellipse-3"></div>
+          </div>
+        </div>
       </div>
     </div>
   </main>
@@ -61,10 +70,10 @@
   display: inline-block;
   background: linear-gradient(
     45deg,
-    #ffffff,
     var(--accent-color),
     #5260ff,
     #ffda37,
+    #ff3d8e,
     var(--accent-color)
   );
   background-size: 300% 300%;
@@ -102,12 +111,110 @@
   line-height: 1.6;
 }
 
+.profile-interaction-wrapper {
+  position: relative;
+  width: 240px;
+  height: 240px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.profile-interaction-wrapper:hover {
+  transform: scale(1.1);
+}
+
+.profile-pic-border {
+  padding: 4px;
+  border-radius: 50%;
+  background: linear-gradient(
+    45deg,
+    var(--accent-color),
+    #5260ff,
+    #ffda37,
+    #ff3d8e,
+    var(--accent-color)
+  );
+  background-size: 200% 200%;
+  animation: shimmer 8s linear infinite;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+  transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
 #profile-picture {
   width: 200px;
   height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  border: 1px solid var(--border-color);
+  display: block;
+}
+
+.profile-interaction-wrapper:hover .profile-pic-border {
+  transform: scale(1.05);
+}
+
+/* Ellipses styles */
+.ellipses {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.ellipse {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  transform: translate(-50%, -50%) scale(0.8);
+  opacity: 0;
+  transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
+}
+
+.ellipse-1 {
+  width: 280px;
+  height: 140px;
+  border-color: var(--accent-color);
+  transform: translate(-50%, -50%) rotate(45deg) scale(0.8);
+}
+
+.ellipse-2 {
+  width: 300px;
+  height: 150px;
+  border-color: #5260ff;
+  transform: translate(-50%, -50%) rotate(-30deg) scale(0.8);
+  transition-delay: 0.1s;
+}
+
+.ellipse-3 {
+  width: 260px;
+  height: 130px;
+  border-color: #ff3d8e;
+  transform: translate(-50%, -50%) rotate(110deg) scale(0.8);
+  transition-delay: 0.2s;
+}
+
+.profile-interaction-wrapper:hover .ellipse {
+  opacity: 0.6;
+}
+
+.profile-interaction-wrapper:hover .ellipse-1 {
+  transform: translate(-50%, -50%) rotate(225deg) scale(1.1);
+}
+
+.profile-interaction-wrapper:hover .ellipse-2 {
+  transform: translate(-50%, -50%) rotate(150deg) scale(1.1);
+}
+
+.profile-interaction-wrapper:hover .ellipse-3 {
+  transform: translate(-50%, -50%) rotate(290deg) scale(1.1);
 }
 
 @media (max-width: 768px) {
@@ -118,6 +225,17 @@
   }
   .main-title {
     font-size: 3rem;
+  }
+
+  .profile-interaction-wrapper {
+    width: 200px;
+    height: 200px;
+    margin-bottom: 2rem;
+  }
+
+  #profile-picture {
+    width: 160px;
+    height: 160px;
   }
 }
 </style>
