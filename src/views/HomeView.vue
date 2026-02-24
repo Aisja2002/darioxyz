@@ -47,6 +47,12 @@ onUnmounted(() => {
           <p class="description">
             Welcome to my professional portfolio. Explore my work, research, and career.
           </p>
+          <div class="cta-container">
+            <button class="hire-me-button">
+              <span>Hire Me</span>
+              <div class="button-glow"></div>
+            </button>
+          </div>
         </div>
         <div class="welcome-card-right">
           <div class="profile-interaction-wrapper">
@@ -335,5 +341,95 @@ onUnmounted(() => {
     width: 160px;
     height: 160px;
   }
+}
+
+.cta-container {
+  display: flex;
+  gap: 1.5rem;
+}
+
+.hire-me-button {
+  position: relative;
+  padding: 1.2rem 3rem;
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  color: white;
+  background: rgba(255, 255, 255, 0.05);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 50px;
+  cursor: pointer;
+  overflow: hidden;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  backdrop-filter: blur(10px);
+}
+
+.hire-me-button span {
+  position: relative;
+  z-index: 2;
+}
+
+.hire-me-button::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+  transition: 0.5s;
+  z-index: 1;
+}
+
+.hire-me-button:hover::before {
+  left: 100%;
+}
+
+.hire-me-button:hover {
+  background: var(--accent-color);
+  border-color: var(--accent-color);
+  transform: translateY(-5px);
+  box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
+}
+
+.button-glow {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 140%;
+  height: 140%;
+  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
+  transform: translate(-50%, -50%) scale(0);
+  opacity: 0;
+  transition: all 0.6s ease;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.hire-me-button:hover .button-glow {
+  transform: translate(-50%, -50%) scale(1);
+  opacity: 0.2;
+}
+
+/* Pulsing animation */
+@keyframes pulse-border {
+  0% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.4);
+  }
+  70% {
+    box-shadow: 0 0 0 15px rgba(var(--accent-color-rgb), 0);
+  }
+  100% {
+    box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0);
+  }
+}
+
+.hire-me-button {
+  animation: pulse-border 3s infinite;
 }
 </style>
