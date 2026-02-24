@@ -107,7 +107,6 @@ onUnmounted(() => {
   overflow: hidden;
 }
 
-/* Subtle texture overlay for glassmorphism */
 .welcome-card::after {
   content: '';
   position: absolute;
@@ -190,7 +189,6 @@ onUnmounted(() => {
   align-items: center;
 }
 
-/* Flip transition */
 .flip-enter-active,
 .flip-leave-active {
   transition: all 0.6s cubic-bezier(0.23, 1, 0.32, 1);
@@ -258,7 +256,6 @@ onUnmounted(() => {
   transform: scale(1.05);
 }
 
-/* Ellipses styles */
 .ellipses {
   position: absolute;
   top: 0;

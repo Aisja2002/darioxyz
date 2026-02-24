@@ -6,6 +6,7 @@
   --bg-color: #000000;
   --text-color: #e0e0e0;
   --accent-color: #42b883;
+  --accent-color-rgb: 66, 184, 131;
   --accent-glow: rgba(66, 184, 131, 0.3);
   --secondary-text: #888888;
   --glass-bg: rgba(20, 20, 20, 0.7);
