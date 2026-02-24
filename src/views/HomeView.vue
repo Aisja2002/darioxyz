@@ -44,14 +44,11 @@ onUnmounted(() => {
               </div>
             </Transition>
           </div>
-          <p class="description">
-            Welcome to my professional portfolio. Explore my work, research, and career.
-          </p>
+          <p class="description">Welcome to my professional portfolio.</p>
           <div class="cta-container">
-            <button class="hire-me-button">
+            <RouterLink to="/contact" class="hire-me-button">
               <span>Hire Me</span>
-              <div class="button-glow"></div>
-            </button>
+            </RouterLink>
           </div>
         </div>
         <div class="welcome-card-right">
@@ -59,6 +56,7 @@ onUnmounted(() => {
             <div class="profile-pic-border">
               <img id="profile-picture" src="../assets/dario.jpeg" alt="Dario Ostuni" />
             </div>
+            <div class="profile-popup">Yep, that's me! You may know me as dariost :)</div>
             <div class="ellipses">
               <div class="ellipse ellipse-1"></div>
               <div class="ellipse ellipse-2"></div>
@@ -168,7 +166,7 @@ onUnmounted(() => {
 }
 
 .main-title:hover {
-  transform: scale(1.02);
+  transform: scale(1.05);
 }
 
 .title-wrapper {
@@ -251,8 +249,7 @@ onUnmounted(() => {
 }
 
 #profile-picture {
-  width: 200px;
-  height: 200px;
+  height: 250px;
   border-radius: 50%;
   object-fit: cover;
   display: block;
@@ -277,7 +274,7 @@ onUnmounted(() => {
   left: 50%;
   border: 1px solid rgba(255, 255, 255, 0.1);
   border-radius: 50%;
-  transform: translate(-50%, -50%) scale(0.8);
+  transform: translate(-50%, -50%) scale(1);
   opacity: 0;
   transition: all 0.6s cubic-bezier(0.165, 0.84, 0.44, 1);
 }
@@ -286,14 +283,14 @@ onUnmounted(() => {
   width: 280px;
   height: 140px;
   border-color: var(--accent-color);
-  transform: translate(-50%, -50%) rotate(45deg) scale(0.8);
+  transform: translate(-50%, -50%) rotate(45deg) scale(1);
 }
 
 .ellipse-2 {
   width: 300px;
   height: 150px;
   border-color: #5260ff;
-  transform: translate(-50%, -50%) rotate(-30deg) scale(0.8);
+  transform: translate(-50%, -50%) rotate(-30deg) scale(1);
   transition-delay: 0.1s;
 }
 
@@ -301,7 +298,7 @@ onUnmounted(() => {
   width: 260px;
   height: 130px;
   border-color: #ff3d8e;
-  transform: translate(-50%, -50%) rotate(110deg) scale(0.8);
+  transform: translate(-50%, -50%) rotate(110deg) scale(1);
   transition-delay: 0.2s;
 }
 
@@ -310,15 +307,41 @@ onUnmounted(() => {
 }
 
 .profile-interaction-wrapper:hover .ellipse-1 {
-  transform: translate(-50%, -50%) rotate(225deg) scale(1.1);
+  transform: translate(-50%, -50%) rotate(225deg) scale(1.2);
 }
 
 .profile-interaction-wrapper:hover .ellipse-2 {
-  transform: translate(-50%, -50%) rotate(150deg) scale(1.1);
+  transform: translate(-50%, -50%) rotate(150deg) scale(1.2);
 }
 
 .profile-interaction-wrapper:hover .ellipse-3 {
-  transform: translate(-50%, -50%) rotate(290deg) scale(1.1);
+  transform: translate(-50%, -50%) rotate(290deg) scale(1.2);
+}
+
+.profile-popup {
+  position: absolute;
+  top: -40px;
+  right: -60px;
+  font-family: 'Caveat', cursive;
+  font-size: 1.3rem;
+  color: white;
+  background: rgba(40, 40, 40, 0.8);
+  padding: 0.5rem 1rem;
+  border-radius: 12px;
+  backdrop-filter: blur(5px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  opacity: 0;
+  transform: scale(0.5) rotate(-10deg);
+  transition: all 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  pointer-events: none;
+  white-space: nowrap;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.3);
+  z-index: 10;
+}
+
+.profile-interaction-wrapper:hover .profile-popup {
+  opacity: 1;
+  transform: scale(1) rotate(5deg) translateY(-10px);
 }
 
 @media (max-width: 768px) {
@@ -367,6 +390,7 @@ onUnmounted(() => {
   align-items: center;
   justify-content: center;
   backdrop-filter: blur(10px);
+  text-decoration: none;
 }
 
 .hire-me-button span {
@@ -381,7 +405,6 @@ onUnmounted(() => {
   left: -100%;
   width: 100%;
   height: 100%;
-  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
   transition: 0.5s;
   z-index: 1;
 }
@@ -391,41 +414,21 @@ onUnmounted(() => {
 }
 
 .hire-me-button:hover {
-  background: var(--accent-color);
-  border-color: var(--accent-color);
+  background: linear-gradient(45deg, #414cce, #ffda37, #ff3d8e);
+  background-size: 300% 300%;
+  animation: shimmer 5s linear infinite;
+  border-color: rgba(255, 255, 255, 0.5);
   transform: translateY(-5px);
-  box-shadow: 0 10px 20px rgba(var(--accent-color-rgb), 0.3);
 }
-
-.button-glow {
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  width: 140%;
-  height: 140%;
-  background: radial-gradient(circle, var(--accent-color) 0%, transparent 70%);
-  transform: translate(-50%, -50%) scale(0);
-  opacity: 0;
-  transition: all 0.6s ease;
-  pointer-events: none;
-  z-index: 0;
-}
-
-.hire-me-button:hover .button-glow {
-  transform: translate(-50%, -50%) scale(1);
-  opacity: 0.2;
-}
-
-/* Pulsing animation */
 @keyframes pulse-border {
   0% {
-    box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0.4);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0.15);
   }
   70% {
-    box-shadow: 0 0 0 15px rgba(var(--accent-color-rgb), 0);
+    box-shadow: 0 0 0 15px rgba(255, 255, 255, 0);
   }
   100% {
-    box-shadow: 0 0 0 0 rgba(var(--accent-color-rgb), 0);
+    box-shadow: 0 0 0 0 rgba(255, 255, 255, 0);
   }
 }
 
